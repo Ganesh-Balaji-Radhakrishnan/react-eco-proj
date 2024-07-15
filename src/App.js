@@ -1,8 +1,14 @@
 import React from "react";
 import "./App.css";
+import { hot } from "react-hot-loader";
+import TodoList from "./todos/TodoList";
 
-function App() {
-  return <div className="App">React EcoSystem</div>;
-}
+const App = () => {
+  return (
+    <div className="App">
+      <TodoList />
+    </div>
+  );
+};
 
-export default App;
+export default hot(module)(App);
