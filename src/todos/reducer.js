@@ -9,7 +9,8 @@ export const todos = (state = [], action) => {
         text: text,
         isCompleted: false,
       };
-      return [...state, task];
+      return state.concat(task);
+      /* return [...state, task]; */
     }
     case DELETE_TODOS: {
       return state.filter((todo) => todo.text !== text);

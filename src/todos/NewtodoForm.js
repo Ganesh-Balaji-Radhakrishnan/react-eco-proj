@@ -17,13 +17,11 @@ const NewtodoForm = ({ todos, onCreatePressed }) => {
       <button
         className="new-todo-button"
         onClick={() => {
-          alert("clicked");
           const duplicatedValue = todos.some(
             (todo) => todo.text === inputValue
           );
-          console.log(duplicatedValue);
+
           if (!duplicatedValue) {
-            console.log(inputValue);
             onCreatePressed(inputValue);
             setInputValue("");
           }
