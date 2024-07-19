@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import "./NewtodoForm.css";
 import { connect } from "react-redux";
 import { createTodos, deleteTodos } from "./action";
+import { sendnewTodoReq } from "../thunks";
 
-const NewtodoForm = ({ todos, onCreatePressed }) => {
+const NewtodoForm = ({ todos, onCreatePressed, onCreateTodosInServer }) => {
   const [inputValue, setInputValue] = useState("");
   return (
     <div className="new-todo-form">
@@ -22,7 +23,7 @@ const NewtodoForm = ({ todos, onCreatePressed }) => {
           );
 
           if (!duplicatedValue) {
-            onCreatePressed(inputValue);
+            onCreateTodosInServer(inputValue);
             setInputValue("");
           }
         }}
@@ -39,6 +40,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onCreatePressed: (text) => dispatch(createTodos(text)),
+  onCreateTodosInServer: (text) => dispatch(sendnewTodoReq(text)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewtodoForm);

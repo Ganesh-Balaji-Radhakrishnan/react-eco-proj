@@ -28,12 +28,12 @@ export const todos = (state = [], action) => {
   const { type, payload } = action;
   switch (type) {
     case CREATE_TODOS: {
-      const { text } = payload;
-      const task = {
+      const { todos } = payload;
+      /* const task = {
         text: text,
         isCompleted: false,
-      };
-      return state.concat(task);
+      }; */
+      return state.concat(todos);
       /* return [...state, task]; */
     }
     case DELETE_TODOS: {

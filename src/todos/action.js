@@ -1,8 +1,8 @@
 export const CREATE_TODOS = "CREATE_TODOS";
-export const createTodos = (text) => {
+export const createTodos = (todos) => {
   return {
     type: CREATE_TODOS,
-    payload: { text },
+    payload: { todos },
   };
 };
 
