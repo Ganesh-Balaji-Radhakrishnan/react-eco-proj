@@ -7,15 +7,16 @@ export const createTodos = (todos) => {
 };
 
 export const DELETE_TODOS = "DELETE_TODOS";
-export const deleteTodos = (text) => ({
-  type: DELETE_TODOS,
-  payload: { text },
-});
-
+export const deleteTodos = (removedTodo) => {
+  return {
+    type: DELETE_TODOS,
+    payload: { removedTodo },
+  };
+};
 export const MARK_TODOS = "MARK_TODOS";
-export const markTodos = (text) => ({
+export const markTodos = (todos) => ({
   type: MARK_TODOS,
-  payload: { text },
+  payload: { todos },
 });
 
 export const LOAD_TODOS_IN_PROGRESS = "LOAD_TODOS_IN_PROGRESS";

@@ -3,8 +3,8 @@ import "./TodoList.css";
 import NewtodoForm from "./NewtodoForm";
 import TodoListItem from "./TodoListItem";
 import { connect } from "react-redux";
-import { deleteTodos, markTodos } from "./action";
-import { loadTodos } from "../thunks";
+import { markTodos } from "./action";
+import { loadTodos, sendCompletedReq, sendDelReq } from "../thunks";
 
 function TodoList({
   todos = [],
@@ -40,8 +40,8 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   onLoadingTodos: () => dispatch(loadTodos()),
-  onDeletePressed: (text) => dispatch(deleteTodos(text)),
-  onMarkedPressed: (text) => dispatch(markTodos(text)),
+  onDeletePressed: (id) => dispatch(sendDelReq(id)),
+  onMarkedPressed: (id) => dispatch(sendCompletedReq(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

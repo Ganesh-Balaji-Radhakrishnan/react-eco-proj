@@ -37,14 +37,21 @@ export const todos = (state = [], action) => {
       /* return [...state, task]; */
     }
     case DELETE_TODOS: {
-      const { text } = payload;
-      return state.filter((todo) => todo.text !== text);
+      const { removedTodo } = payload;
+      return state.filter((todo) => todo.id !== removedTodo.id);
     }
     case MARK_TODOS: {
-      const { text } = payload;
-      return state.map((todo) =>
+      const { todos: markedTodos } = payload;
+      /*  return state.map((todo) =>
         todo.text === text ? { ...todo, isCompleted: !todo.isCompleted } : todo
-      );
+      ); */
+      return state.map((todo) => {
+        if (todo.id === markedTodos.id) {
+          console.log(markedTodos);
+          return markedTodos;
+        }
+        return todo;
+      });
     }
     case LOAD_TODOS_SUCCESS: {
       const { todos } = payload;
