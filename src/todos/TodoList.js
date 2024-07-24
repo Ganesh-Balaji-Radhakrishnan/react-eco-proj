@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import "./TodoList.css";
 import NewtodoForm from "./NewtodoForm";
 import TodoListItem from "./TodoListItem";
 import { connect } from "react-redux";
 import { markTodos } from "./action";
+import styled from "styled-components";
 import { loadTodos, sendCompletedReq, sendDelReq } from "../thunks";
 import {
   getCompletedTodos,
@@ -11,6 +11,11 @@ import {
   getIsLoading,
   getTodos,
 } from "./selectors";
+
+const ListWrapper = styled.div`
+  max-width: 700px;
+  margin: auto;
+`;
 
 function TodoList({
   completedTodos,
@@ -28,7 +33,7 @@ function TodoList({
   return isLoading ? (
     loadingComponent
   ) : (
-    <div className="list-wrapper">
+    <ListWrapper>
       <NewtodoForm />
       <h3>InComplete Todos: </h3>
       {inCompleteTodos.map((todo) => (
@@ -46,7 +51,7 @@ function TodoList({
           onMarkedPressed={onMarkedPressed}
         />
       ))}
-    </div>
+    </ListWrapper>
   );
 }
 
