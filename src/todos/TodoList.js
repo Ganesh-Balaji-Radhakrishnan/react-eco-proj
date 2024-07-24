@@ -5,6 +5,7 @@ import TodoListItem from "./TodoListItem";
 import { connect } from "react-redux";
 import { markTodos } from "./action";
 import { loadTodos, sendCompletedReq, sendDelReq } from "../thunks";
+import { getIsLoading, getTodos } from "./selectors";
 
 function TodoList({
   todos = [],
@@ -35,8 +36,8 @@ function TodoList({
 }
 
 const mapStateToProps = (state) => ({
-  todos: state.todos,
-  isLoading: state.isLoading,
+  todos: getTodos(state),
+  isLoading: getIsLoading(state),
 });
 const mapDispatchToProps = (dispatch) => ({
   onLoadingTodos: () => dispatch(loadTodos()),
